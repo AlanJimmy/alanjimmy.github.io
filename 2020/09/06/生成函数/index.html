@@ -102,7 +102,7 @@
 <meta property="og:description" content="生成函数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-06T10:52:18.000Z">
-<meta property="article:modified_time" content="2020-10-06T02:13:25.742Z">
+<meta property="article:modified_time" content="2020-09-10T23:41:56.388Z">
 <meta property="article:author" content="AlanTuring">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="鸽~">
@@ -418,7 +418,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-10-06 10:13:25" itemprop="dateModified" datetime="2020-10-06T10:13:25+08:00">2020-10-06</time>
+                <time title="Modified: 2020-09-11 07:41:56" itemprop="dateModified" datetime="2020-09-11T07:41:56+08:00">2020-09-11</time>
               
             
           </span>
@@ -466,7 +466,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.7k</span>
+                <span title="Symbols count in article">15k</span>
               
 
               
@@ -480,7 +480,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">4 mins.</span>
+                <span title="Reading time">13 mins.</span>
               
             </div>
           
@@ -502,105 +502,15 @@
       
 
       
-        <h1 id="生成函数简介"><a href="#生成函数简介" class="headerlink" title="生成函数简介"></a>生成函数简介</h1><p>生成函数（$\text{generating function}$），又称母函数，是一种形式幂级数，其每一项的系数可以提供关于这个序列的信息。</p>
-<p>生成函数有许多不同的种类，但大多可以表示为单一的形式：</p>
-<script type="math/tex; mode=display">
-F(x)=\sum_na_nk_n(x)</script><p>其中$k_n(x)$被称为核函数。不同的核函数会导出不同的生成函数，拥有不同的性质。举个例子：</p>
-<ul>
-<li><p>普通生成函数： $k_n(x)=x^n$</p>
-</li>
-<li><p>指数生成函数： $k_n(x)=\frac{x^n}{n!}$</p>
-</li>
-<li><p>狄利克雷生成函数： $k_n(x)=\frac1{n^x}$</p>
-</li>
-</ul>
-<p>另外，对于生成函数$F(x)$，我们用$[k_n(x)]F(x)$来表示它的第$n$项的核函数对应的系数，也就是$a_n$。</p>
-<h1 id="普通生成函数"><a href="#普通生成函数" class="headerlink" title="普通生成函数"></a>普通生成函数</h1><p>序列$a$的普通生成函数（$\text{ordinary generating function，OGF}$）定义为形式幂级数：</p>
-<script type="math/tex; mode=display">
-F(x)=\sum_na_nx^n</script><p> $a$既可以是有穷序列，也可以是无穷序列。常见的例子（假设$a$以$0$为起点）：</p>
-<ul>
-<li>序列$a=\langle1,2,3\rangle$的普通生成函数是$1+2x+3x^2$</li>
-<li>序列$a=\langle1,1,1,\cdots\rangle$的普通生成函数是$\sum_{n\ge0}x^n$</li>
-<li>序列$a=\langle1,2,4,8,16,\cdots\rangle$的生成函数是$\sum_{n\ge 0}2^nx^n$</li>
-<li>序列$a=\langle1,3,5,7,9,\cdots\rangle$的生成函数是$\sum_{n\ge0}(2n+1)x^n$</li>
-</ul>
-<p>换句话说，如果序列$a$有通项公式，那么它的普通生成函数的系数就是通项公式。</p>
-<h2 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h2><p>考虑两个序列$a,b$的普通生成函数，分别为$F(x),G(x)$。那么有：</p>
-<script type="math/tex; mode=display">
-F(x)\pm G(x)=\sum_n(a_n+b_n)x^n</script><p>因此$F(x)\pm G(x)$是序列$\langle a_n+b_n\rangle$的普通生成函数。</p>
-<p>考虑乘法运算，也就是卷积：</p>
-<script type="math/tex; mode=display">
-F(x)G(x)=\sum_nx^n\sum_{i=0}^na_ib_{n-i}</script><p>因此$F(x)G(x)$是序列</p>
-<script type="math/tex; mode=display">
-\langle\sum_{i=0}^na_ib_{n-i}\rangle</script><p>的普通生成函数。</p>
-<h2 id="封闭形式"><a href="#封闭形式" class="headerlink" title="封闭形式"></a>封闭形式</h2><p>在运用生成函数的过程中，我们不会一直使用形式幂级数的形式，而会适时地转化为封闭形式以更好地化简。</p>
-<p>例如：$\langle1,1,1,\cdots\rangle$的普通生成函数$F(x)=\sum_{n\ge0}x^n$，我们可以发现：</p>
-<script type="math/tex; mode=display">
-F(x)x+1=F(x)</script><p>那么解这个方程得到：</p>
-<script type="math/tex; mode=display">
-F(x)=\frac1{1-x}</script><p> 这就是$\sum_{n\ge0}x^n$的封闭形式。</p>
-<p>证明的话就先鸽着</p>
-<p>考虑等比数列$\langle1,p,p^2,p^3,p^4,\cdots\rangle$的生成函数$F(x)=\sum_{n\ge0}p^nx^n$，有：</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-F(x)px+1&=F(x)
-\\F(x)&=\frac1{1-px}
-\end{align*}</script><p>等比数列的封闭形式与展开形式是常用的变换手段。</p>
-<p>请求出下列数列的普通生成函数（形式幂级数形式和封闭形式）。难度的循序渐进的。</p>
-<ol>
-<li><p>$a=\langle0,1,1,1,1,\cdots\rangle$</p>
-</li>
-<li><p>$a=\langle1,0,1,0,1,\cdots\rangle$</p>
-</li>
-<li><p>$a=\langle1,2,3,4,5,\cdots\rangle$</p>
-</li>
-<li><p>$a_n=\dbinom{m}{n}\;(m是常数，n\ge0)$</p>
-</li>
-<li><p>$a_n=\dbinom{m+n}{n}$</p>
-</li>
-</ol>
-<p><a href="https://oi-wiki.org/math/gen-func/ogf/" target="_blank" rel="noopener"><strong>答案</strong></a></p>
-<h2 id="斐波那契数列的生成函数"><a href="#斐波那契数列的生成函数" class="headerlink" title="斐波那契数列的生成函数"></a>斐波那契数列的生成函数</h2><p>接下来我们来推导斐波那契数列的生成函数。</p>
-<p>斐波那契数列定义为:</p>
-<script type="math/tex; mode=display">
-a_0=0,a_1=1,a_n=a_{n-1}+a_{n-2}(n>1)</script><p>设它的普通生成函数是$F(x)$，那么根据它的递推式，我们可以类似地列出关于$F(x)$的方程：</p>
-<script type="math/tex; mode=display">
-F(x)=xF(x)+x^2F(x)-a_0x+a_1x+a_0</script><p>那么解的：</p>
-<script type="math/tex; mode=display">
-F(x)=\frac x{1-x-x^2}</script><p>接下来的问题是，如何求出他的展开形式？</p>
-<h3 id="展开方式一"><a href="#展开方式一" class="headerlink" title="展开方式一"></a>展开方式一</h3><p>不妨将$x+x^2$当作为一个整体，那么可以得到：</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-F(x)&=\frac x{1-(x+x^2)}
-\\&=\sum_{n\ge0}(x+x^2)^n
-\\&=\sum_{n\ge0}\sum_{i=0}^n\dbinom{n}{i}x^{2i}x^{n-i}
-\\&=\sum_{n\ge0}\sum_{i=0}^n\dbinom{n}{i}x^{n+i}
-\\&=\sum_{n\ge0}x^n\sum_{i=0}^n\dbinom{n-i}{i}
-\end{align*}</script><p>我们得到了$a_n$的通项公式，但那并不是我们熟知的有关黄金分割比的形式。</p>
-<h3 id="展开方式二"><a href="#展开方式二" class="headerlink" title="展开方式二"></a>展开方式二</h3><p>考虑求解一个待定系数的方程：</p>
-<script type="math/tex; mode=display">
-\frac A{1-ax}+\frac B{1-bx}=\frac x{1-x-x^2}</script><p>通分得到：</p>
-<script type="math/tex; mode=display">
-\frac {A-Abx+B-aBx}{(1-ax)(1-bx)}=\frac x{1-x-x^2}</script><p>待定项系数相等，我们得到：</p>
-<script type="math/tex; mode=display">
-\begin{cases}
-A+B=0\\
--Ab-aB=1\\
-a+b=1
-ab=-1
-\end{cases}</script><p>解得：</p>
-<script type="math/tex; mode=display">
-\begin{cases}
-A=\frac1{\sqrt5}\\
-B=-\frac1{\sqrt5}\\
-a=\frac{1+\sqrt5}2\\
-b=\frac{1-\sqrt5}2\\
-\end{cases}</script><p>那么我们根据等比数列的展开式，就可以得到斐波那契数列的通项公式：</p>
-<script type="math/tex; mode=display">
-\frac x{1-x-x^2}=\sum_{n\ge0}x^n\frac 1{\sqrt5}\left(\left(\dfrac{1+\sqrt5}2\right)^n-\left(\dfrac{1-\sqrt5}2\right)^n\right)</script><p>这也被称为斐波那契数列的另一个封闭形式（$\frac x{1-x-x^2}$ 是一个封闭形式）。</p>
-<p>对于任意多项式 $P(x), Q(x)$，生成函数$\frac{P(X)}{Q(x)}$的展开式都可以使用上述方法求出。在实际运用的过程中，我们往往先求出$Q(x)$的根，把分母表示为$\prod(1-p_ix)^{d_i}$的形式，然后再求分子。</p>
-<h2 id="鸽"><a href="#鸽" class="headerlink" title="鸽~"></a>鸽~</h2><p>牛顿二项式定理、卡特兰数的生成函数先鸽一鸽</p>
-
+        <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="b624b98457a3c8cdbb09d7c15c4b07b2844858aaa1e1ee40dcce2cc4ae0a2ec1">fff1b603ad6b669d8bddc4c0eda8bf31c190fa4e21bffec9c7bca83f323e26f9cc8ac35112dda4d24203bfabe6055ea45b2fb4459b22bb916d3d598c02784c4d5d7a127bd371b6dd17e8123224e149eae6a5417fb52344bfcd399b4aa7f552b572c892c34e0b20aa70c2a8a97015b04973e83d5922d87031c094a89c9b4971970e0099d97ceae948d367c36a83380f18d9328c5e59847f2012ef8fe297c6d28df3d491def9468dc0cb9c683d47cb2869983aec954f0e28b4d375260f13b725a8324e1cb8e1a5eda6bf000bdf8c57ddc93577005e20ec5ffd5ce246b83f89fe375dd729c0d9544b369e6267396f6e76153acc2baea3f94e031e912a21550556d57ff2e6c817c088ba0a35ce7cff3573e21f8ac151bfbdd9c1ef508f289ddd16ad294f344f76ce8131c5932418209c3e0438cad1f701a1d1d369099f5317038d233ed815329d989808b78bb55ca3bf8f283fa87ac59f5790cc6ad50b2fde983f068844361f40c90eb75c627cfc1fbc59517956b2a36a68a78ada071f1a67581243c4c56ba94a60ea7b4e0a1e6523b1118c93f32715c48847bcfe8f9853c2f615a3ec8b54842be8e814dcaed75829917f93c1bfa5728ac8bcfd10b233ee13f060c4bf75ce007adc232dcc33a5ea187f180859b70b2ebf44da8d8a42dbe95439a6c405ccd47c0270b7f056c4a69c546ff26c53635eacfeeb545cfd799e21949b0349d2df55f50ae690ad019e2a8a4db74fa0f68a63a7309bf18d36d4234dc967889ef360c2889d26e203efa7a223b6a195503953fe321a857994cec8baa2e98509e334ea3f3dd135b36cb8251e8489cfb7e94399832b5bf2298ed7187e517cf26399759d61d43dab39685856bf1838d5ab4c0b19d21725787b84faf076c6f8d59fe6b377836b8a9cbd9b9e8ac935862609076fd722be2a6bbca52e1ce458e812f32d25babbc7dd89f818d0afc8a494a20fc2a112fb1fa600a3e4eb4b356c9b5357848b1c1642eddaf60f280678fefa23bc8c171835abd1d5b330940d86b9489fd3e618039a1718459267feee8756d18b72e713e43b01876aabff578dc6d3a822003829bc9c2906259f36272808ccea9f30f59f4a6ef9ab88bdc8c61dfd421c617fb12a1709dff6e0c8565a65f30b73670a7f79759e1aec97843249de2f2ea2b31847d633f3862ca816173a72ca6e710f65bffbb3bb0000e73d59b25fe920526a0f7cd41ca5dcccf94f86bab26469bfb36e8cb8d3149485bfff0a232fad19631598219b66e9b40ffa0c5d29e2fd1d943fb2509e86fa2e664e4698b0233f68c2123470dbb2bfa87f22a5da28a6126cf842a74752d7fc417c7d2938cb99f66396ec031051147814b5a4d72d930252e4fa675d5f5f8fb391640cb7e1fac412eb723897a9906c1e56206d083902552c944f121df00309cb43812bffdae5b31102a124d4686350075de925288f1199e3825c250898ae4738c9624398487fe06f8f460cfbadecc7dd6b2a042e9898e145606258378a48a79ab232b6be03e8df6dc59035ef8ba0750efab89a71af27be9741e5c7e67884957acb165cdf2fd1c40ec53d1b435bc509db05658124078910582a9dae6e498aebeabe0ba99505691fdf047ea3ce10b6615e9ec75dc70443a369355e44087276f7fe55bd2af35f4671c600a1bf51c002240427b31ad142b8747912528292827a83a0f311cf80cd104baf0bfe4eb0d63d9653dab295c7b74c8b95880451c96c1962f314079295862d94d653ece754782f5c1cb46c6687c84382a9f55c8821e8193afc9a1f674a5ba092e3404b3a7770ae6b93b5df2f694e6590187c1a2714201e13a9223cdc9a1a92a1b77594c5c68756ec56080111e5efeb19db52a95e1923dd12dfdb3311db587902ac1d97640c2991b5a55f18618bcbc5e197526ae914c68a84591c62e2c5df28a6e304d5cd705dc2cdbfb693c7391bd710824629aacf9593d9bf6d4d5277cbdb0608925da65e4b0ef7c8a9fe65040b286395de561853f72af3366ed9621d0f68b641378aaa92ba0e837892e4c3bac26461dd3d3a91670d7fd2531b3ecb9d7675d114d7a11445f53a9b9ecd2d75cd6e83eca885853b5cb46694928eb13b5775d306d14e247ae0b3d4dda6b676622b382215dd04505c45effea456dd887e7197c945b31c2a9ca8d983368e37a783ebcb59ad0f891a050936e57a4ac6ecda3e3e85bacc2aacc79f825fadf8032bc0bb2e50ef1a6c78ae0972b7e4c9de785848134f37a6c8d604660e74065dcf9245e06bab08a4a68205eddeb5902a8b6d71dd04b2eb067cec3250691753ce10ccd6cb1870d5f714dbc74d4fa90264b9837bb4b0fee98a45a7663f84fc3b4d25dc34d43264a1006acdb0037d31ba86b9a8f6569a5d8206bff482626c67d8582674080efe1e92f9c055700515621efbe07992effc3f7876caf80634b2f5b16c7052df0735921c03c8b6926f201702f99a498a5d4d4b735b743f8d48b3d59d485bf01db1cc95a2072c36adf1a6fea4f69c9223bfdc504d973904c32031a2767b95943cc460e9737fc63027a6b5e2ae543cdda5dc745b23ae814661c6ac33a337cf8a2e461c57315182df050c7939b9a263948f695992c596c9076806330077866d5387a0ddc8da135b0db04e3cfd8319d72902bb7f1fd74991048463f38dbb268e4ec0c50567d16dd912080e6274b22e53360edb86ba1d6d1415df59fd23c2a298f42b734086069099d6e8fd50b6d36b131648f29d5be111b6f03e28bae7a030e423bf24d8787a16c5669e1eda8bb3223ca16a8d30ecf6c8dc0ceb38067d4e201a394083183a9bf8fd0836e43674a1386683b72038c25046b71fc4b5c7b8ec1e0e803a392343db925e66fd4fbc8db59aff147fa9a369ceb4ba3857a99b42262b968ec7873bce8d3c3594120f1c8af990fb3263f6ffa7640eeaef200073d583021ed9b1334e4097ce0864369b9fb7af1bc58e16a3516be94158f6179cf101f3af53dbe78826e51dac3b57dcf14ddc59d1b57e713135b2dd01be522eb2eeb23a56677c9e1c938f2fcaf95c77f260c7cf481205c84c033789b81af4ec398e73313cd22017ea9dff4765d3077a0c9d72283475eaf69fc4566da8d1bcb758798e08d39bf893dc508ee6195a552484b9e9505cf5854557130045b6ee235fe04a1ca1e7cd805703abad5916a2db0587a44b3392ea1c24038db5f624f46f1d1c66daed88248bd4fc999e330872ee429f62a31dad8f14d1b3422f109158e986f692e1ccb7f809fa2a55d135d2b95aa3f06d415e613ab48bcdd305b70ba7e38df21c03c921252e9c744d6f718feb757c2f9970a9193f4bf021220de3bdacda6bbceb1e4a174b7f51b5fa8a67026d05ebfdbc28b85a8edf15b9b7bb358c031d5dd8d407560ef1afa62fb1e2bf3c70cb513ad28fa25b03a24f3f863855e2c9d512d21282885a372d9056eb9c6c4b1991690f7978d7227c734b824e502612afe4a2e01c04559dd16f7ad8de3adc2bb1599e26c47b220b85dd3181b0fb9fe266e0e22aad1012c6bc0bb23435508803bb0f96df3c48a5dfb21c725b4dccaaf7a375c34a1004b25c5e36eaa143e78bb7c32691b29ab902472d6b29339214fd3df29ded2f6ef713f27c8867d994b40dc2b2b3111f616b6bdd84d28054af1fc5c63c4e61faf2015b7ac4eda79ba63fdcd788347ca11f00f00cda3ae5aee1f42f8888a5ef37a319b4a92f86878ff568be7a62ff284fde8cba94d9b460b43052bc55fed30576e8a780d6ddab2b108f4e1275e8cb3ffbe66ff052524c69c8fe404ee8593f062197684cb82194b2b21b374a911d84251fb9a6715a7047803d8c821dde492468f381f9cb681899a654b2a57081c66a50a92c9858af8f8f641ec2099924048aae054ad1ee201c51d020de7c6abcac63b6059e1994be118263da522e628b21947a428a4230091848fc277689eebc33f7abe21e4dc3c7a2801016f56f689ebbd74ff92fc62b70e333036b7d13d2ffb4a0cc000ba49b3d99cc13046941add747c1a843979b31918ee6d93fe940a1699b122eaa95e7a8341aca155bfdeb352352fba09749827f796f3eca339587a39481e125c84d81d110d41d92544f8d0cc6c40fe557205ea404b0199e30e4c4e0eeba41feb8cdfd0b6497b763a7cb78e228b8a6ba6135783659552798ad1d9d52674ad8bd13ff0d54bfad8e4ad2ace9babe1aa0f7838517bd7a1721a2294b2d8c5eabb5b2078de6524395c71a3293866e4993bc0c3742b614994b5dc412f0bf8db830aeaee866a13591242976a1f50d737a150ee59ba2a07dd5649db4bd3a57a3dea96a9b93e1e09a1ba79276f28f9fcc1c1bdd53c997b2e01c4af0189e01c5e1bf90b1fc6dcf0ed3e21841aa60e482bfea6f3a552493c970d07d085dffa07d9324f4792484958119da7e88e019f65603e7ecc0e45add34b5b30e7c9a2945c7df535d51f66e6df1f358182e43e6e6d5a0151a17720ec6e33ad9b51652b170376d89fb2bafdd8b61f306bba033bb77ecd8659ed93b6904c9e035003b20a7543dbead4760a633cb53f015411195de435bf35b7fffbb6ecff264f28a90200d7350c5bb3f83ec27c3a75fbf355e47151b3388683d62d82395fe1f9cd5fba0dccccfb0fd87c131c5a7f4687126b4d43e4711dab7e0a2221d28ef1e5ab244506e721e531def975298a8f342b093fadb612b92b82a8f83d98bfc6b79e5ff8b444a77e57f1f2be8a775e9b8aca9101f164676d833b5c7b8e51ff465832f276ca7677f72626c0599b7d97866308d63163768691a6d4eed469b93569d510fcbea715bc5643250b09b17bc57d976654ed7af68f3d16c1e7f42aca293f8c857368da0e91843e286993cb9969e9ecbfead1ca22853fefacac32b7f866b08e62030332efce0a9d73bbd7bad43b6699d631249d2d604e48c62aa48817b97ab471ca4d41de26092645e06efa5dc9bf6da4b0ce28c44050774c12a5429c8023fa08892a0d573be2befdaa8835f984523dd28a99fbe975a98e5e2c66211721bfe9f4efd837e0dab7d699497606a8c0c2b2b687afcfcd5e0c79becc6422084db5c4f80381822ab40b93d18c5e76dfa57ae730508df8d18c06f401f1fffa3317c7807f38c62df98bc0674c7233c71fcf23e0dfb4884b6591bf578d29e8b2192430262e2343db62377692dd2a22b6adf71dacf906863ce8422c770e2a49b3f3f12379d95ec4eb72b44109a46f3fbdf1713fcc08b3ba655c811f76bb1c339142c7887a33d144d60c7332edaa071e82c1cd5d40e199347b95557b4ce836322a5d0ec687642b5c6ad543eee1e39136850434c69e2197bdff57860b5b7fade0c1c85792407f18532fdae7a214749152e32965a0ba561011ef91cd64d5843874017c5a0c8f77b1a947964a8cc42c1d8fa48243e33f5fa500a2e2d4a72f7a06a8bacf1e408e248cfa41ce9f600b1d8c802bc667c0a4ae3e4b26f44cac03c22b941bfe7bc6fa44b607248b9daa2a2ff9d4139be73ae1e62c940ac64c392f326afbc803b37123996cf31a0f76e4658df263c03f6ec566fd01d928ca4dce9b160f92be1cb4ec107543558d9d227cb37982a573f4d19d6175f727c980cfdd978f6a5de73158f90bdce44229d92faacf64df55d1afe21597497848fcf13498b776c9cf076aab08773fd801f931a6084033455e974bad4159d44d14f62069b74e64bee2c1162455ee54a54acb431ed5a8d81714551873d82d21b7da4033dde5852e3434579a41b71e3f71e57cb15eb4aab517be39a11dc45c981f01a4869e0445dc01fb1f67ef5a81bc0e4ae441727793c05e34850081df79f17fed34f8f22540d29ed92eae0b23f86cdba9f006cc458df297f95afc24b56b8fd8d407951aaa51bd623cee697235dc36033f7f294ba54b407d4acb139ee3749120cdbd05c7f470ec57d9c849d000c40a652a5e6395dfb79e33ac05a44fca7c5a3d38cc123d8dcba41aaf4ef8ff87b1a6f593b46bbc88576aa491853a6eaf4976da9ad95cb83dae29e2d42ea1cb19ae7165acfa9d94e12750f63ad9f0892375ba7201b5dfb103d6025d795c5dd697a9ece67c284d83d694fe6c3108fe2f42d3a759dbc16bc00b4e861ba6977e05db61a4985f4598cf83e0948dedb24efeff23c303477855e0222161136cbc06b3f4f2aea8015147297c117954c9ca0a2295570c210739a14c31d2b482e91813d713431fc4ae46056c7b47d1de16fb878624926ecb812cb2b176b2a1df21352024d961d5b5a1722a35f7a0433fbf3b2c423abe419a8cd44f2732498015d8b38d5c156df4c1187dd87d098bf05042db235b5a5bbe727b6d5d46f32845a5e99096b8acbe398e27718275c61b7ecdb6c3f127b3003e015a3f44ba95fbeb3d76419c723ac1731321cfd6f2675eec7f4d6b73974a70d05aafc543e07f73bf8c4dcba47c709446bfd8011af031a0fdd598c4b20d244c88a084b9b34aa6c8df873e11fefeeee4ce21bdb02482e8a50ce44ed7297b68b460a30ceca1b58b9fee0409f69eac12e5ad39992410a67a6986660da0d97678546342ec341a16e3132d8fff270ecc08fb7e3dc624db18af06f22af659b9192825374b81460f92ee08db04c852f91e2d621b965accd1b84c8697baab43a8f09927130de25432609574c62d50aaeaf322351db830b9ad7793fb256f8a219d16b6b281e49ecac7e79645392ce9a3f25697ead4e9bda60baf469f1d2d7d5d9af442423f69e3ddf3caf7838ca3f025b3c24234cd00d9c78a83157ea3ace6d91da9de212c825efb2926cf393c707ff2615fe5076e0849448d7c290e792842f6b6d1903fb8858e108695c8bac18a0e11bc0749b66a72adc6b4395622e6e9a3eb6d31a6c63bbf2720b1f9140a40f8db47a97d625b93b7430c871c8ca5406685782f04b1c0956a2a21725146e9b60ce3cb09188a84c8ccf2bac940ec5a140bd64a02c765b74bbab948a26c7abe8f79a88317834f3f630dfbaca7cb90db6277f096d6f7a5861ff7034d62561a8a7f873de9b0947dffde539c02259143ca167592edeffb0213db8a5b172056aeb1f59f191e19f2a99b30358de7b953f08f2bb7681f883ba203b8d47927b961b9fff5ad13e1abcebe0b91ec348e86c2ad93b8464a28590769dc559490de44db1527ace187035d282ac07c35fecb131a991b300c4641df614badcf0f752b47985945a35105fb7061368b49dc6df4b3b2f07ca1d1c9038848db919d29cdd52a80a847add67a7f53d240749ae6d5f2421d51448baaf8077b2be3d7e6953ab2171858c8e8ac6e344cd9675fb8c546141faa4ab5c21b0377fe2ed6a86ea9deadc77c5f121113244c340306bc1a68875f1c30c1a92544faa79306c1e500158466dce062466be24e2564cf381df199940a73a6b8d23aa877ed4a22d0304aae443f85046ad993dbdc6226d38a70cd8fc7ca23d7f9b68579b7027a3864ab69a4e227423893ae2deb692b76d1851961159b4b913768e93a0fff00c7e576a2adf99b2eeb5c8d683f16fd3557cd23d838a5031b1f26436127f4c2eaedb5ed36019532e6db070492edd58c31650c238a33e63cf5c7f87338d550d97210ebc5a1a7be6160de05448d08f3b9a5272bef1a8a1ca312bba402810d43c9b163ed20d147f87873c8e28fae41ba5c4555faaf593a31d65e10e16574ba36643c8bae0ab9cdbeb7321293eb7cf3d8fcae6bef1fcde37d54f7bed662f9617a10690ca3d57db1147503bb4df5536de169464fdc5699c98cd729b9a42e7f8f0b71c0eb0ce531c45a81f6656021f57eda83ed6a0b688fd0b0bbf13f8a3bb8f1040ee6ff7d290e3959898d6722c25fd132379ebc13bcbada647177b6924ec461ff1a7b21a4f728ee7a36f5fa743bbf5331e5fa77812bc7e59399311cfc52493217c202fd881df6c53d8a12604ee08d7d2bab92bf725018b36c2291a2e8f7b6f4816e9fec7ebe1d0e9af77d91dfd14d94cbd32d24fc681696cf2555853958e6ee1d33d620af207e9b4f3e79ded8fb106d9c9b278fcd2ef3812c36e152efb2c23528afedec27c75370d18a8aace41bf2360c73da5f25ff6b1b6fabb0d12185556ace3c3e0d3f4a22914ec754269536c7966e6b692fef5defc2391cb18f6cf580a4969ba8be2b91b860956b3da940fba10f9d95fdd6659e9339b86e9f2bd8779711b944826c653af929935fdf5d48b308921b940cee00d72902418cb2bfc878b12c54385ce84b41e2fe31f911df832e00a5f0b164ef368ce64474d441a52749694d2ba33cd4ae9b6478875e97efd113056f048a00b6b8d6694ba825842882fd241234fc851b0cd7f361db46eaed61c8c1c9690b4b9912193082bbe070b65958c82b69aa8461aa4a28f31a6879f10ccd086403749d70ee00c58fd13955b055b8284554412bfd036222a670bd94c88ce7b1904241b1c02187d2094729ccbe0161e35298af1b91cb63d249009ee7d72088b7a553142bdfeae075fb5bed6dab0edc984b9d47f260fe90038e2bc8ef71be0b9bd81f0a3fed458b53c24c1a70dcf503ef4ec487aa76c329a9ccc4f880938f5c9b2a6dfbb9e0fcc408fdd24d5bb8e5dd61031977b59f6c3c6bf79d3627ac23061a2286297bbeab086597bef9c83d42133381f7b81adb128197a999053e2561473f2fc04f74110cd105a258f8149e213de7e97c85ecd35ddd7f979e72cf79dfbc0afdb2eb59f2557ecb3f6a24c2223d27f43b568020cfcaf8d35bd63eed359dedd6edc49713abcd6beefcce33792f62e7cac98ada2319aa594cf6bcf25be5fc45e824dd2c86f50335ca4d15a31d4628d2ceca3fbfbc0a634a7f3bbac4f17ed7af5162849b931f5511819845be4aab5ef78694b650ecb55576c9a132f5d43968d3a6792519b2b92715507acfb8366b5eb26bbc48489a9421769a4792e3a1474acacd780a659131b02b4f958c3d5fd4df3ed3f3e75cda9c040591f42ac7f4d9b7099573db156fba44c906bcc1448b6655a734e6c7dd455d158ac683fc7622bcc641b31a9dd302c7300a5102b6d350987a34524eef406ac68df0985e43fa71064aef650af70a0739aee7e0a5066a990261406cd53f5a164e5395ccc1fc9029f00696d6ab6f3dd5e6d08ecc7fc3c625d5cf87d768658496fb068fe4fa78a4d0e0063248af5ae1625bf0dd9f82c31759683c85cb476d36cc56e19efda40a327ab849102caf40d95cf04aa836ea15b1586934b72c341e7f13968e0d27221d4c3ccea2aec3c4d845083ee63704dbe65c2c86da28a9e775071e61671ddc11c8c7940c34339de0d69a200ee96ee88e794b58449585b6f9cbe05a35a7efd5416bc082df3d52cdf669bc106d86946487f309de69dfe0d2c86f34c1a5bb3cd3b55e0bbb68c8ed28c3bbc07f87f1a2e8bd3647f50429861dfaa8dd1d151b0eaef9ad04dd44e9bb5149ef1a38f1d52cefcbc23fa7bdfd02a07375e1d703586f92dd1bd45094934c4457abce7f898a174b2c62343a560ceaeb9011cebbe617119ab9270898764877906d1c85010e45e6cdcc3eaefc024abf04b9bcffb9683f1db59e57b22cf87c6108f99f3c24fe9d303983eb9778bc338e0f915d12df995efdcc311ee2a77958cfe8c89fc9a73e056ba4bc3d4e448bfd04333a37db1d51405cf107ed7c725be3224890bac6b881c8c9aaeb4689f173797edf8446c692b165b1ad886a1cd5ea6520b1545996f7878e8c0d23760880d5466cd7174c7dd8cc3aa6faf33b0926ab60ad0c5a6c433e01ee85a559865198fc293918aab6e5891134c9f04798fe83c5a8ed1d36090a331dcf0f051357908f1cf925f1d3fdc8fdd17800aa3ca370a6229ee33ad6b1a30e2d7403f3a52eefd6a7c2180bca6cef92f87402bf4ba5e4830367e9a1577b6d510cb17b252303f048b3ef5bc4f2b27108ea4c0</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
 
@@ -701,17 +611,8 @@ b=\frac{1-\sqrt5}2\\
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -950,23 +851,6 @@ b=\frac{1-\sqrt5}2\\
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生成函数简介"><span class="nav-number">1.</span> <span class="nav-text">生成函数简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普通生成函数"><span class="nav-number">2.</span> <span class="nav-text">普通生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本运算"><span class="nav-number">2.1.</span> <span class="nav-text">基本运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封闭形式"><span class="nav-number">2.2.</span> <span class="nav-text">封闭形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列的生成函数"><span class="nav-number">2.3.</span> <span class="nav-text">斐波那契数列的生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#展开方式一"><span class="nav-number">2.3.1.</span> <span class="nav-text">展开方式一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#展开方式二"><span class="nav-number">2.3.2.</span> <span class="nav-text">展开方式二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鸽"><span class="nav-number">2.4.</span> <span class="nav-text">鸽~</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
