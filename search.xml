@@ -2753,4 +2753,33 @@ g(j)+s_js_i-{s_j}^2&> g(k)+s_ks_i-{s_k}^2\\
         <tag>考试</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SP7001 VLATTICE - Visible Lattice Points</title>
+    <url>/2020/10/12/SP7001-VLATTICE-Visible-Lattice-Points/</url>
+    <content><![CDATA[<h1 id="SP7001-VLATTICE-Visible-Lattice-Points"><a href="#SP7001-VLATTICE-Visible-Lattice-Points" class="headerlink" title="SP7001 VLATTICE - Visible Lattice Points"></a><a href="https://www.luogu.com.cn/problem/SP7001" target="_blank" rel="noopener">SP7001 VLATTICE - Visible Lattice Points</a></h1><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>求：</p>
+<script type="math/tex; mode=display">
+3+3\sum_{i=1}^n\sum_{j=1}^n[\gcd(i,j)==1]+\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n[\gcd(i,j,k)==1]</script><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>没啥分析的，直接考虑化简</p>
+<p>对于三元的部分有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n[\gcd(i,j,k)==1]&=\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n\sum_{d|\gcd(i,j,k)}\mu(d)\\
+&=\sum_{i=1}^n\mu(i)\left\lfloor\frac ni\right\rfloor^3
+\end{aligned}</script><p>对于二元的部分有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+3\sum_{i=1}^n\sum_{j=1}^n[\gcd(i,j)==1]&=3\sum_{i=1}^n\sum_{j=1}^n\sum_{d|\gcd(i,j)}\mu(d)\\
+&=3\sum_{i=1}^n\mu(i)\left\lfloor\frac ni\right\rfloor^2
+\end{aligned}</script><p>所以可以稍微整理一下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+ans&=3+3\sum_{i=1}^n\sum_{j=1}^n[\gcd(i,j)==1]+\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n[\gcd(i,j,k)==1]\\
+&=3+3\sum_{i=1}^n\mu(i)\left\lfloor\frac ni\right\rfloor^2+\sum_{i=1}^n\mu(i)\left\lfloor\frac ni\right\rfloor^3\\
+&=3+\sum_{i=1}^n\mu(i)\left\lfloor\frac ni\right\rfloor\times(3\left\lfloor\frac ni\right\rfloor+\left\lfloor\frac ni\right\rfloor^2)
+\end{aligned}</script><p>然后数论分块一下就可以了</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+      </tags>
+  </entry>
 </search>
