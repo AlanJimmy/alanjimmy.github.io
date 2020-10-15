@@ -2779,7 +2779,7 @@ ans&=3+3\sum_{i=1}^n\sum_{j=1}^n[\gcd(i,j)==1]+\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1
   <entry>
     <title>CF1139D</title>
     <url>/2020/10/15/CF1139D/</url>
-    <content><![CDATA[<h1 id="CF1139D-Step-to-One"><a href="#CF1139D-Step-to-One" class="headerlink" title="CF1139D Step to One"></a><a href="https://www.luogu.com.cn/problem/CF1139D" target="_blank" rel="noopener">CF1139D Step to One</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>你手中有集合 ${1,2,3\cdots,n}$，然后每一次操作你都会从数集中等概率抽取一个数放到新的序列中，知道新的序列的 $\gcd$ 的值为 $1$。</p>
+    <content><![CDATA[<h1 id="CF1139D-Step-to-One"><a href="#CF1139D-Step-to-One" class="headerlink" title="CF1139D Step to One"></a><a href="https://www.luogu.com.cn/problem/CF1139D" target="_blank" rel="noopener">CF1139D Step to One</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>你手中有集合 ${1,2,3\cdots,n}$，然后每一次操作你都会从数集中等概率抽取一个数放到新的序列中，直到新的序列的 $\gcd$ 的值为 $1$。</p>
 <p>求你的期望操作次数</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这道题十分的精妙，它集合了数学期望还有莫比乌斯反演，十分考验 $OIER$ 的基础能力</p>
 <h3 id="数学期望"><a href="#数学期望" class="headerlink" title="数学期望"></a>数学期望</h3><p>首先知道，$E(x)$ 表示对于事件 $x$ 的数学期望， $P(x)$ 表示事件 $x$ 的概率</p>
