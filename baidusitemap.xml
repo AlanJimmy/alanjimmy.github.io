@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://e.coding.net/alanturing/myblog.git/2020/10/15/CF1139D/</loc>
+    <lastmod>2020-10-15</lastmod>
+  </url>  <url>
     <loc>https://e.coding.net/alanturing/myblog.git/2020/10/14/%E8%81%94%E8%B5%9BDay3/</loc>
-    <lastmod>2020-10-14</lastmod>
+    <lastmod>2020-10-15</lastmod>
+  </url>  <url>
+    <loc>https://e.coding.net/alanturing/myblog.git/2020/09/25/CF920G/</loc>
+    <lastmod>2020-10-15</lastmod>
   </url>  <url>
     <loc>https://e.coding.net/alanturing/myblog.git/2020/10/13/%E8%81%94%E8%B5%9BDay2/</loc>
     <lastmod>2020-10-13</lastmod>
@@ -41,9 +47,6 @@
     <lastmod>2020-09-25</lastmod>
   </url>  <url>
     <loc>https://e.coding.net/alanturing/myblog.git/2020/09/25/HEOI-2015%E5%85%AC%E7%BA%A6%E6%95%B0%E5%BA%8F%E5%88%97/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>  <url>
-    <loc>https://e.coding.net/alanturing/myblog.git/2020/09/25/CF920G-List-of-Integers/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>  <url>
     <loc>https://e.coding.net/alanturing/myblog.git/2020/09/23/%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/</loc>

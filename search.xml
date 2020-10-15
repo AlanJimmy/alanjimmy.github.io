@@ -1,47 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CF920G List of Integers</title>
-    <url>/2020/09/25/CF920G-List-of-Integers/</url>
-    <content><![CDATA[<h1 id="List-of-Intergers"><a href="#List-of-Intergers" class="headerlink" title="List of Intergers"></a><a href="https://www.luogu.com.cn/problem/CF920G" target="_blank" rel="noopener">List of Intergers</a></h1><h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>求第$k$大的大于等于 $x$ 且与 $p$ 互质的数</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>即，求最小的 $y$ 使：</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^y[i\perp p]-\sum_{i=1}^x[i\perp p]=k</script><h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><p>那么看见这个形式，自然而然地会想到这个东西：$\mu*1=\epsilon$</p>
-<p>所以就可以把 $[i\perp p]$ 写成：</p>
-<script type="math/tex; mode=display">
-\sum_{d|\gcd(i,p)}\mu(d)</script><p>那么交求和顺序，先枚举 $p$ 的因子 $d$，可以得到:</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-\sum_{i=1}^y[i\perp p]&=\sum_{i=1}^y\sum_{d|\gcd(i,p)}\mu(d)\\
-&=\sum_{d|p}\mu(d)\sum_{i=1}^\left\lfloor\frac y d\right\rfloor1
-\\&=\sum_{d|p}\mu(d)\left\lfloor\frac y d\right\rfloor
-\end{align*}</script><p>那么，这个时候，后面这一块，已经是十分好求的了，可以直接枚举 $\sqrt y$ 范围内 $y$ 的因子(顺便得到 $&gt;\sqrt y$ )的因子，按照这个直接加就可以了</p>
-<h2 id="容斥"><a href="#容斥" class="headerlink" title="容斥"></a>容斥</h2><p>还是考虑$[i\perp p]$，换一种写法呢就是$[\gcd(i,p)==1]$</p>
-<p>那么就是说，不合法的就是$\gcd(i,p) &gt; 1$</p>
-<p>那么按照套路，还是应该用总共的减去不合法的，</p>
-<p>那么就要枚举$p$的每个因子对答案的贡献</p>
-<p>同样的，还是可以得到容斥系数就是$\mu$</p>
-<p>那么还是能够得到同一个式子：</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^y[i\perp p]=\sum_{d|p}^y\mu(d)\left\lfloor\frac y d\right\rfloor</script><p>当然，这并不是巧合，有兴趣的同学可以自行了解一下(<del>我也说不清</del>)</p>
-<p>时间复杂度为$O(n\log n\sqrt n)$</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e7</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> __read()</span><br><span class="line">&#123;</span><br><span class="line">    int x(0), t(1);</span><br><span class="line">    <span class="function"><span class="keyword">char</span> <span class="title">o</span> <span class="params">(getchar())</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (o &lt; <span class="string">'0'</span> || o &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="string">'-'</span>) t = <span class="number">-1</span>;</span><br><span class="line">        o = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (; o &gt;= <span class="string">'0'</span> &amp;&amp; o &lt;= <span class="string">'9'</span>; o = getchar()) &#123;</span><br><span class="line">        x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (o ^ <span class="number">48</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x * t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mu[maxn], pr[maxn], cnt, line;</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; maxn; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) pr[++cnt] = i, mu[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * pr[j] &lt; maxn; ++j) &#123;</span><br><span class="line">            vis[i * pr[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % pr[j]) mu[i * pr[j]] = -mu[i];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Query</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ans</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l * l &lt;= x; ++l) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x % l) <span class="keyword">continue</span>;</span><br><span class="line">        ans += mu[l] * (n / l);</span><br><span class="line">        <span class="keyword">if</span> (l * l &lt; x) ans += mu[x / l] * (n / (x / l));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Init();</span><br><span class="line">    <span class="keyword">int</span> T = __read();</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> x = __read(), p = __read(), k = __read();</span><br><span class="line">        int l(1), r(1e7), ans(0);</span><br><span class="line">        line = Query(x, p);</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (Query(mid, p) - line &gt;= k) ans = mid, r = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>UPT：</strong>有位机房巨佬认为我写的这个是有点小问题的，我觉得这个可以解释一下</p>
-<p>他的意思是按照样例给的$7\;22\;1$，我的$Query$函数求得的$9$和$10$的答案都是$5$，那么为什么我取得的是$9$而不是$10$，然后$10$与$22$并不互质，为什么对$10$还有答案呢？</p>
-<p>回到最开头，有这样一个东西：</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^y[i\perp p]-\sum_{i=1}^x[i\perp p]=k</script><p>会发现，我们求得的值，并不是说$y$是第几个，我们求得的值是在$[1,y]$有几个</p>
-<p>令：</p>
-<script type="math/tex; mode=display">
-f(x)=\sum_{i=1}^x[i\perp p]</script><p>当$f(y)-f(y-1)=1$时，当且仅当$[y\perp p]=1$，所以，我们二分答案要取的是第一个满足条件的数</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-      <tags>
-        <tag>莫比乌斯反演</tag>
-        <tag>容斥</tag>
-        <tag>前缀和</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CF932D Tree</title>
     <url>/2020/09/04/CF932D/</url>
     <content><![CDATA[<h1 id="CF932D-Tree"><a href="#CF932D-Tree" class="headerlink" title="CF932D Tree"></a><a href="https://www.luogu.com.cn/problem/CF932D" target="_blank" rel="noopener">CF932D Tree</a></h1><h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><ul>
@@ -2813,8 +2772,76 @@ ans&=3+3\sum_{i=1}^n\sum_{j=1}^n[\gcd(i,j)==1]+\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1
 </div>
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
+        <tag>鸽~</tag>
         <tag>考试</tag>
-        <tag>鸽～</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CF1139D</title>
+    <url>/2020/10/15/CF1139D/</url>
+    <content><![CDATA[<h1 id="CF1139D-Step-to-One"><a href="#CF1139D-Step-to-One" class="headerlink" title="CF1139D Step to One"></a><a href="https://www.luogu.com.cn/problem/CF1139D" target="_blank" rel="noopener">CF1139D Step to One</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>你手中有集合 ${1,2,3\cdots,n}$，然后每一次操作你都会从数集中等概率抽取一个数放到新的序列中，知道新的序列的 $\gcd$ 的值为 $1$。</p>
+<p>求你的期望操作次数</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这道题十分的精妙，它集合了数学期望还有莫比乌斯反演，十分考验 $OIER$ 的基础能力</p>
+<h3 id="数学期望"><a href="#数学期望" class="headerlink" title="数学期望"></a>数学期望</h3><p>首先知道，$E(x)$ 表示对于事件 $x$ 的数学期望， $P(x)$ 表示事件 $x$ 的概率</p>
+<p>那么有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+E(\gcd=1)&=\sum_{i\ge 1}E(len=i)
+\\&=\sum_{i\ge1}P(len=i)\times i\\
+&=\sum_{i\ge1}P(len=i)\sum_{j=1}^i1\\
+&=\sum_{j\ge1}\sum_{i\ge j}P(len = i)\\
+&=\sum_{j\ge1}P(len \ge j)\\
+&=\sum_{j\ge1}P(len=j)+\sum_{j\ge1}P(len > j)
+\\&=1+\sum_{j\ge1}P(len > j)
+\end{aligned}</script><p>这个步骤，就是期望步数（概率 * 步数），显然就是期望公式$E(x+y)=E(x)+E(y)$</p>
+<p>其中 $len$ 表示达到 $\gcd=1$ 花费的步数</p>
+<p>那么重点就是这个$\sum_{j\ge1}P(len&gt;j)$该如何处理了</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+        <tag>数学</tag>
+        <tag>期望Dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CF920G List of Integers</title>
+    <url>/2020/09/25/CF920G/</url>
+    <content><![CDATA[<h1 id="List-of-Intergers"><a href="#List-of-Intergers" class="headerlink" title="List of Intergers"></a><a href="https://www.luogu.com.cn/problem/CF920G" target="_blank" rel="noopener">List of Intergers</a></h1><h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>求第$k$大的大于等于 $x$ 且与 $p$ 互质的数</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>即，求最小的 $y$ 使：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^y[i\perp p]-\sum_{i=1}^x[i\perp p]=k</script><h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><p>那么看见这个形式，自然而然地会想到这个东西：$\mu*1=\epsilon$</p>
+<p>所以就可以把 $[i\perp p]$ 写成：</p>
+<script type="math/tex; mode=display">
+\sum_{d|\gcd(i,p)}\mu(d)</script><p>那么交求和顺序，先枚举 $p$ 的因子 $d$，可以得到:</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\sum_{i=1}^y[i\perp p]&=\sum_{i=1}^y\sum_{d|\gcd(i,p)}\mu(d)\\
+&=\sum_{d|p}\mu(d)\sum_{i=1}^\left\lfloor\frac y d\right\rfloor1
+\\&=\sum_{d|p}\mu(d)\left\lfloor\frac y d\right\rfloor
+\end{align*}</script><p>那么，这个时候，后面这一块，已经是十分好求的了，可以直接枚举 $\sqrt y$ 范围内 $y$ 的因子(顺便得到 $&gt;\sqrt y$ )的因子，按照这个直接加就可以了</p>
+<h2 id="容斥"><a href="#容斥" class="headerlink" title="容斥"></a>容斥</h2><p>还是考虑$[i\perp p]$，换一种写法呢就是$[\gcd(i,p)==1]$</p>
+<p>那么就是说，不合法的就是$\gcd(i,p) &gt; 1$</p>
+<p>那么按照套路，还是应该用总共的减去不合法的，</p>
+<p>那么就要枚举$p$的每个因子对答案的贡献</p>
+<p>同样的，还是可以得到容斥系数就是$\mu$</p>
+<p>那么还是能够得到同一个式子：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^y[i\perp p]=\sum_{d|p}^y\mu(d)\left\lfloor\frac y d\right\rfloor</script><p>当然，这并不是巧合，有兴趣的同学可以自行了解一下(<del>我也说不清</del>)</p>
+<p>时间复杂度为$O(n\log n\sqrt n)$</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e7</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> __read()</span><br><span class="line">&#123;</span><br><span class="line">    int x(0), t(1);</span><br><span class="line">    <span class="function"><span class="keyword">char</span> <span class="title">o</span> <span class="params">(getchar())</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (o &lt; <span class="string">'0'</span> || o &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="string">'-'</span>) t = <span class="number">-1</span>;</span><br><span class="line">        o = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (; o &gt;= <span class="string">'0'</span> &amp;&amp; o &lt;= <span class="string">'9'</span>; o = getchar()) &#123;</span><br><span class="line">        x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (o ^ <span class="number">48</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x * t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mu[maxn], pr[maxn], cnt, line;</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; maxn; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) pr[++cnt] = i, mu[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * pr[j] &lt; maxn; ++j) &#123;</span><br><span class="line">            vis[i * pr[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % pr[j]) mu[i * pr[j]] = -mu[i];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Query</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ans</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l * l &lt;= x; ++l) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x % l) <span class="keyword">continue</span>;</span><br><span class="line">        ans += mu[l] * (n / l);</span><br><span class="line">        <span class="keyword">if</span> (l * l &lt; x) ans += mu[x / l] * (n / (x / l));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Init();</span><br><span class="line">    <span class="keyword">int</span> T = __read();</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> x = __read(), p = __read(), k = __read();</span><br><span class="line">        int l(1), r(1e7), ans(0);</span><br><span class="line">        line = Query(x, p);</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (Query(mid, p) - line &gt;= k) ans = mid, r = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>UPT：</strong>有位机房巨佬认为我写的这个是有点小问题的，我觉得这个可以解释一下</p>
+<p>他的意思是按照样例给的$7\;22\;1$，我的$Query$函数求得的$9$和$10$的答案都是$5$，那么为什么我取得的是$9$而不是$10$，然后$10$与$22$并不互质，为什么对$10$还有答案呢？</p>
+<p>回到最开头，有这样一个东西：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^y[i\perp p]-\sum_{i=1}^x[i\perp p]=k</script><p>会发现，我们求得的值，并不是说$y$是第几个，我们求得的值是在$[1,y]$有几个</p>
+<p>令：</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{i=1}^x[i\perp p]</script><p>当$f(y)-f(y-1)=1$时，当且仅当$[y\perp p]=1$，所以，我们二分答案要取的是第一个满足条件的数</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+        <tag>容斥</tag>
+        <tag>前缀和</tag>
       </tags>
   </entry>
 </search>
