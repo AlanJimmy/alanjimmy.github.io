@@ -94,12 +94,20 @@
   
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="AlanTuring&#39;s Blog">
-<meta property="og:url" content="https://e.coding.net/alanturing/myblog.git/tags/%E5%85%B6%E4%BB%96%E6%9D%BF%E5%AD%90/index.html">
+  <meta name="description" content="非常妙的一道题吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P6216 回文匹配">
+<meta property="og:url" content="https://e.coding.net/alanturing/myblog.git/2020/11/10/P6216-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D/index.html">
 <meta property="og:site_name" content="AlanTuring&#39;s Blog">
+<meta property="og:description" content="非常妙的一道题吧">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-10T12:54:30.000Z">
+<meta property="article:modified_time" content="2020-11-10T13:33:59.011Z">
 <meta property="article:author" content="AlanTuring">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="KMP">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="回文串">
 <meta name="twitter:card" content="summary">
 
 
@@ -107,7 +115,7 @@
 
 
 
-  <link rel="canonical" href="https://e.coding.net/alanturing/myblog.git/tags/其他板子/"/>
+  <link rel="canonical" href="https://e.coding.net/alanturing/myblog.git/2020/11/10/P6216-回文匹配/"/>
 
 
 
@@ -117,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: 其他板子 | AlanTuring's Blog</title>
+  <title>P6216 回文匹配 | AlanTuring's Blog</title>
   
 
 
@@ -165,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -241,7 +249,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -331,109 +339,271 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>其他板子<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://e.coding.net/alanturing/myblog.git/2020/11/10/P6216-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D/"/>
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlanTuring"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/shixiang.jpg"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AlanTuring's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2223/10/22/latex/" itemprop="url">
-            
-              <span itemprop="name">$\LaTeX$[置顶]</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">P6216 回文匹配
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2223-10-22T22:22:22+08:00"
-              content="2223-10-22" >
-          10-22
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-11-10 20:54:30 / Modified: 21:33:59" itemprop="dateCreated datePublished" datetime="2020-11-10T20:54:30+08:00">2020-11-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/10/P6216-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2020/11/10/P6216-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/11/10/P6216-%E5%9B%9E%E6%96%87%E5%8C%B9%E9%85%8D/" class="leancloud_visitors" data-flag-title="P6216 回文匹配">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">11k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">10 mins.</span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">非常妙的一道题吧</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="P6216-回文匹配"><a href="#P6216-回文匹配" class="headerlink" title="P6216 回文匹配"></a><a href="https://www.luogu.com.cn/problem/P6216" target="_blank" rel="noopener">P6216 回文匹配</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>对于一对字符串 $(s_1,s_2)$，若 $s_1$ 的长度为奇数的子串 $(l,r)$ 满足 $(l,r)$ 是回文的，那么 $s_1$ 的“分数”会增加 $s_2$ 在 $(l,r)$ 中出现的次数。</p>
+<p>现在给出一对 $(s_1,s_2)$，请计算出 $s_1$ 的“分数”。</p>
+<p>答案对 $2 ^ {32}$ 取模。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行两个整数，$n,m$，表示 $s_1$ 的长度和 $s_2$ 的长度。</p>
+<p>第二行两个字符串，$s_1,s_2$。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一行一个整数，表示 $s_1$ 的分数。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所以对于一个回文中心为 $i$ 的答案：</p>
+<script type="math/tex; mode=display">
+ans_i=\sum_{p=0}^{p_i}sum^\prime_{i+p-len_b}-sum^\prime_{i-p}[p\times 2-1\ge len_b]</script><p>然后可以把这个布尔表达式拉出来康康：</p>
+<script type="math/tex; mode=display">
+p\times 2-1\ge len_b\\
+p\times 2\ge len_b+1\\
+p\ge\left\lceil\frac{len_b+1}{2}\right\rceil</script><p>所以还可以这样表达：</p>
+<script type="math/tex; mode=display">
+mid=\left\lceil\frac{len_b+1}2\right\rceil\\
+ans_i=\sum_{p=mid}^{p_i}sum^\prime_{i+p-len_b}-sum^\prime_{i-p}</script><p>所以答案就可以写成：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+ans &= \sum_{i=mid}^{len_a}\sum_{p=mid}^{p_i}sum^\prime_{i+p-len_b}-sum^\prime_{i-p}\\
+ans &= \sum_{i=mid}^{len_a}(\sum_{p=mid}^{p_i}sum^\prime_{i+p-len_b})-(\sum_{p=mid}^{p_i}sum^\prime_{i-p})\\
+ans &= \sum_{i=mid}^{len_a}(sum^{\prime\prime}_{i+p_i-len_b}-sum^{\prime\prime}_{i+mid-len_b})-(sum^{\prime\prime}_{i-mid}-sum^{\prime\prime}_{i-len_b})\\
+\end{aligned}</script><p>所以就可以 $KMP$ 玩了以后做一个二阶的前缀和，然后就这样就可以了。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        Code
+    </div>
+    <div class='spoiler-content'>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">char</span> a[maxn], b[maxn];</span><br><span class="line"><span class="keyword">int</span> lena, lenb, sum[maxn];</span><br><span class="line"><span class="keyword">int</span> pre[maxn], p[maxn];</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">kmp</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>, nxt = <span class="number">0</span>; i &lt;= lenb; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (nxt &amp;&amp; b[nxt + <span class="number">1</span>] != b[i]) nxt = pre[nxt];</span><br><span class="line">        <span class="keyword">if</span> (b[nxt + <span class="number">1</span>] == b[i]) ++nxt;</span><br><span class="line">        pre[i] = nxt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, nxt = <span class="number">0</span>; i &lt;= lena; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (nxt &amp;&amp; b[nxt + <span class="number">1</span>] != a[i]) nxt = pre[nxt];</span><br><span class="line">        <span class="keyword">if</span> (b[nxt + <span class="number">1</span>] == a[i]) ++nxt;</span><br><span class="line">        <span class="keyword">if</span> (nxt == lenb) &#123;</span><br><span class="line">            nxt = pre[nxt];</span><br><span class="line">            sum[i - lenb + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lena; ++i) sum[i] += sum[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lena; ++i) sum[i] += sum[i - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">manacher</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    int mx(0), id(0);</span><br><span class="line">    p[<span class="number">0</span>] = <span class="string">'#'</span>, p[lena + <span class="number">1</span>] = <span class="string">'&amp;'</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lena; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mx &gt; i) p[i] = min(p[id * <span class="number">2</span> - i], mx - i);</span><br><span class="line">        <span class="keyword">else</span> p[i] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (a[i - p[i]] == a[i + p[i]] &amp;&amp; i - p[i] &gt;= <span class="number">1</span> &amp;&amp; i + p[i] &lt;= lena) ++p[i];</span><br><span class="line">        <span class="keyword">if</span> (i + p[i] &gt; mx) mx = p[i] + i, id = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Sum</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum[r] - sum[l - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d %d"</span>, &amp;lena, &amp;lenb);</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%s %s"</span>, a + <span class="number">1</span>, b + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    kmp();</span><br><span class="line">    manacher();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> mid = <span class="built_in">ceil</span>((lenb + <span class="number">1</span>)/<span class="number">2.0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &lt;= lena; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">2</span> * p[i] - <span class="number">1</span> &lt; lenb) <span class="keyword">continue</span>;</span><br><span class="line">        ans += Sum(i - lenb + mid, i - lenb + p[i]);</span><br><span class="line">        ans -= Sum(i - p[i], i - mid);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2020/06/24/%E6%A8%A1%E6%9D%BF/" itemprop="url">
-            
-              <span itemprop="name">模板</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-06-24T21:42:37+08:00"
-              content="2020-06-24" >
-          06-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    </div>
+</div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag"><i class="fa fa-tag"></i> 前缀和</a>
+          
+            <a href="/tags/KMP/" rel="tag"><i class="fa fa-tag"></i> KMP</a>
+          
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
+          
+            <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag"><i class="fa fa-tag"></i> 回文串</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/09/T20201109/" rel="next" title="T20201109">
+                <i class="fa fa-chevron-left"></i> T20201109
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2223/10/22/%E5%88%9D%E8%B5%9B%E6%95%B4%E5%90%88-%E4%B8%B4%E9%97%A8%E4%B8%80%E8%84%9A/" rel="prev" title="初赛整合-临门一脚[转载&置顶]">
+                初赛整合-临门一脚[转载&置顶] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -454,8 +624,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -701,6 +880,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#P6216-回文匹配"><span class="nav-number">1.</span> <span class="nav-text">P6216 回文匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式"><span class="nav-number">1.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式"><span class="nav-number">1.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">1.4.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.5.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -849,6 +1045,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -1230,43 +1430,35 @@
   
   <script>
     
-    function showTime(Counter) {
-      var entries = [];
+    function addCount(Counter) {
       var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
         .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
           }
         })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
     }
     
 
@@ -1286,9 +1478,7 @@
             });
           };
           
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
+          addCount(Counter);
           
         })
     });
@@ -1379,7 +1569,7 @@
   <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script>
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#more");
   
   </script>
 
