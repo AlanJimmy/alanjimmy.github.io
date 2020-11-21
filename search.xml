@@ -3243,4 +3243,37 @@ h=id*\mu\\\\
         <tag>树链剖分</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JSOI2011 柠檬</title>
+    <url>/2020/11/21/JSOI2011-%E6%9F%A0%E6%AA%AC/</url>
+    <content><![CDATA[<h1 id="JSOI2011-柠檬"><a href="#JSOI2011-柠檬" class="headerlink" title="[JSOI2011]柠檬"></a><a href="https://www.luogu.com.cn/problem/P5504" target="_blank" rel="noopener">[JSOI2011]柠檬</a></h1><p>还是先有一些约定：</p>
+<ul>
+<li>$f_i$ 表示到消除到 $i$ 时的最大值。</li>
+<li>$c_i$ 表示当前贝壳的大小。</li>
+<li>$s_i$ 表示从 $1$ 开始到 $i$ 有多少个贝壳与当前贝壳颜色相同。</li>
+</ul>
+<p>然后，显然可以发现，我们接下来的一段的两端的颜色应当是相同的时候最优，所以就可以对不同的颜色分开讨论。</p>
+<p>考虑对于 $i$，有决策点 $j$，当且仅当 $c_i==c_j$。若此时有两个决策点 $j&lt;k$，此时 $j$ 比 $k$ 更优当且仅当：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_{j-1}+c_i\times(s_i-s_j+1)^2&>f_{k-1}+c_i\times(s_k-s_j+1)^2\\
+f_{j-1}+c_is_j-2c_is_is_j+c_i{s_j}^2+c_i&>f_{k-1}+c_is_k-2c_is_is_k+c_i{s_k}^2+c_i\\
+f_{j-1}+c_is_j-2c_is_is_j+c_i{s_j}^2&>f_{k-1}+c_is_k-2c_is_is_k+c_i{s_k}^2\\
+f_{j-1}-2c_is_is_j+c_i{s_j}^2-f_{k-1}-2c_is_is_k+c_i{s_k}^2&>c_i(s_k-s_j)\\
+\frac{\Delta y}{c_i(s_k-s_j)}&>1
+\end{aligned}</script><p>由于这些点的 $s$ 是丹增的，所以就可以用栈维护一个上凸壳，栈定就是当点的最优决策点。</p>
+<p>所以找出来所有决策点以后，在用决策单调性稍加处理，就可以统计答案了。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        Code
+    </div>
+    <div class='spoiler-content'>
+        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">1e4</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n, tot[maxm];</span><br><span class="line"><span class="keyword">int</span> s[maxn], c[maxn];</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; stk[maxm];</span><br><span class="line">ll f[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Y</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f[i - <span class="number">1</span>] + <span class="number">1l</span>l * c[i] * s[i] * s[i] - <span class="number">2l</span>l * c[i] * s[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">slope</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span> * (Y(i) - Y(j)) / (s[i] * c[i] - s[j] * c[j]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">calc</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f[j - <span class="number">1</span>] + <span class="number">1l</span>l * c[i] * (s[i] - s[j] + <span class="number">1</span>) * (s[i] - s[j] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> t1 stk[t][stk[t].size() - 1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> t2 stk[t][stk[t].size() - 2]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%d"</span>, c + i);</span><br><span class="line">        s[i] = ++tot[c[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, t; i &lt;= n; ++i) &#123;</span><br><span class="line">        t = c[i];</span><br><span class="line">        <span class="keyword">while</span> (stk[t].size() &gt; <span class="number">1</span> &amp;&amp; slope(t2, i) &gt;= slope(t2, t1)) stk[t].pop_back();</span><br><span class="line">        stk[t].push_back(i);</span><br><span class="line">        <span class="keyword">while</span> (stk[t].size() &gt; <span class="number">1</span> &amp;&amp; calc(i, t1) &lt;= calc(i, t2)) stk[t].pop_back();</span><br><span class="line">        f[i] = calc(i, t1);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"%lld\n"</span>, f[n]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+</div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>Dp优化</tag>
+      </tags>
+  </entry>
 </search>

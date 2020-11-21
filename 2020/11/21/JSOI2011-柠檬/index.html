@@ -94,17 +94,17 @@
   
 
 
-  <meta name="description" content="几何题">
+  <meta name="description" content="绝妙的斜率优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSOI平衡点">
-<meta property="og:url" content="https://e.coding.net/alanturing/myblog.git/2020/07/24/[JSOI]%E5%B9%B3%E8%A1%A1%E7%82%B9/index.html">
+<meta property="og:title" content="JSOI2011 柠檬">
+<meta property="og:url" content="https://e.coding.net/alanturing/myblog.git/2020/11/21/JSOI2011-%E6%9F%A0%E6%AA%AC/index.html">
 <meta property="og:site_name" content="AlanTuring&#39;s Blog">
-<meta property="og:description" content="几何题">
+<meta property="og:description" content="绝妙的斜率优化">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-24T02:18:44.000Z">
-<meta property="article:modified_time" content="2020-08-26T08:33:14.187Z">
+<meta property="article:published_time" content="2020-11-21T02:12:36.000Z">
+<meta property="article:modified_time" content="2020-11-21T03:34:09.756Z">
 <meta property="article:author" content="AlanTuring">
-<meta property="article:tag" content="几何">
+<meta property="article:tag" content="Dp优化">
 <meta name="twitter:card" content="summary">
 
 
@@ -112,7 +112,7 @@
 
 
 
-  <link rel="canonical" href="https://e.coding.net/alanturing/myblog.git/2020/07/24/[JSOI]平衡点/"/>
+  <link rel="canonical" href="https://e.coding.net/alanturing/myblog.git/2020/11/21/JSOI2011-柠檬/"/>
 
 
 
@@ -122,7 +122,7 @@
   };
 </script>
 
-  <title>JSOI平衡点 | AlanTuring's Blog</title>
+  <title>JSOI2011 柠檬 | AlanTuring's Blog</title>
   
 
 
@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://e.coding.net/alanturing/myblog.git/2020/07/24/%5BJSOI%5D%E5%B9%B3%E8%A1%A1%E7%82%B9/"/>
+    <link itemprop="mainEntityOfPage" href="https://e.coding.net/alanturing/myblog.git/2020/11/21/JSOI2011-%E6%9F%A0%E6%AA%AC/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlanTuring"/>
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JSOI平衡点
+          <h1 class="post-title" itemprop="name headline">JSOI2011 柠檬
 
               
             
@@ -399,24 +399,12 @@
                 
               
 
-              <time title="Created: 2020-07-24 10:18:44" itemprop="dateCreated datePublished" datetime="2020-07-24T10:18:44+08:00">2020-07-24</time>
+              <time title="Created: 2020-11-21 10:12:36 / Modified: 11:34:09" itemprop="dateCreated datePublished" datetime="2020-11-21T10:12:36+08:00">2020-11-21</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-08-26 16:33:14" itemprop="dateModified" datetime="2020-08-26T16:33:14+08:00">2020-08-26</time>
               
             
           </span>
@@ -430,8 +418,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/24/%5BJSOI%5D%E5%B9%B3%E8%A1%A1%E7%82%B9/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2020/07/24/%5BJSOI%5D%E5%B9%B3%E8%A1%A1%E7%82%B9/" itemprop="commentCount"></span>
+                <a href="/2020/11/21/JSOI2011-%E6%9F%A0%E6%AA%AC/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2020/11/21/JSOI2011-%E6%9F%A0%E6%AA%AC/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -439,7 +427,7 @@
 
           
           
-             <span id="/2020/07/24/%5BJSOI%5D%E5%B9%B3%E8%A1%A1%E7%82%B9/" class="leancloud_visitors" data-flag-title="JSOI平衡点">
+             <span id="/2020/11/21/JSOI2011-%E6%9F%A0%E6%AA%AC/" class="leancloud_visitors" data-flag-title="JSOI2011 柠檬">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -464,7 +452,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.3k</span>
+                <span title="Symbols count in article">7.6k</span>
               
 
               
@@ -478,13 +466,13 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">6 mins.</span>
+                <span title="Reading time">7 mins.</span>
               
             </div>
           
 
           
-              <div class="post-description">几何题</div>
+              <div class="post-description">绝妙的斜率优化</div>
           
 
         </div>
@@ -500,16 +488,32 @@
       
 
       
-        <h1 id="JSOI2004-平衡点-吊打XXX"><a href="#JSOI2004-平衡点-吊打XXX" class="headerlink" title="[JSOI2004]平衡点 / 吊打XXX"></a><a href="https://www.luogu.com.cn/problem/P1337" target="_blank" rel="noopener">[JSOI2004]平衡点 / 吊打XXX</a></h1><p>被吊打了啊 !</p>
-<p><del>这道题, 看上去真的挺难的 .</del></p>
-<p>简言之, 就是求平衡状态时, 中心点的位置 .</p>
-<p>做出受力分析图, 我们可以看得出来, 这个点的位置, 其实与绳子是无关的, 每根绳的拉力, 也一定是等于重物的</p>
-<p>所以, 我们可以先随机一个点, 求出这$n$根线对着个点的作用力的合力. 因为力的方向不好表示, 所以我们可以正交分解, 将力分解到$x$轴和$y$轴上去.</p>
-<p>这个点必定会沿合力方向移动一定的距离, 直到合力为零. </p>
-<p>但是, 我们在不用其他数学工具的情况下, 我们可以随机一个较大步长, 然后不断地缩小这个步长, 就可以越来越接近这个目标点了. </p>
-<p>当某一次的移动前后的变化小于精度范围时, 那么我们就找到答案了.</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line"><span class="keyword">double</span> X, Y;</span><br><span class="line">bool Xf(1), Yf(1);</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> X, Y, G;</span><br><span class="line">&#125;Points[Maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Solve</span><span class="params">(<span class="keyword">double</span> M)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    double x(0), y(0), Temp;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        Temp = <span class="built_in">sqrt</span>((X - Points[i].X) * (X - Points[i].X) + (Y - Points[i].Y) * (Y - Points[i].Y));</span><br><span class="line">        <span class="keyword">if</span> (!Temp) <span class="keyword">continue</span>;</span><br><span class="line">        x += Points[i].G / Temp * (Points[i].X - X);</span><br><span class="line">        y += Points[i].G / Temp * (Points[i].Y - Y);</span><br><span class="line">    &#125;</span><br><span class="line">    Temp = <span class="built_in">sqrt</span>(x * x + y * y);</span><br><span class="line">    Y += M / Temp * y;</span><br><span class="line">    X += M / Temp * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span>, &amp;N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i)</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%d %d %d"</span>, &amp;Points[i].X, &amp;Points[i].Y, &amp;Points[i].G);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> M = <span class="number">10000</span>, tx, ty;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        tx = X, ty = Y;</span><br><span class="line">        Solve(M);</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">abs</span>(tx - X) &lt; <span class="number">0.00001</span> &amp;&amp; <span class="built_in">abs</span>(ty - Y) &lt; <span class="number">0.00001</span>) <span class="keyword">break</span>;</span><br><span class="line">        M *= <span class="number">0.9</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"%.3lf %.3lf\n"</span>, X, Y);</span><br><span class="line">    system (<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+        <h1 id="JSOI2011-柠檬"><a href="#JSOI2011-柠檬" class="headerlink" title="[JSOI2011]柠檬"></a><a href="https://www.luogu.com.cn/problem/P5504" target="_blank" rel="noopener">[JSOI2011]柠檬</a></h1><p>还是先有一些约定：</p>
+<ul>
+<li>$f_i$ 表示到消除到 $i$ 时的最大值。</li>
+<li>$c_i$ 表示当前贝壳的大小。</li>
+<li>$s_i$ 表示从 $1$ 开始到 $i$ 有多少个贝壳与当前贝壳颜色相同。</li>
+</ul>
+<p>然后，显然可以发现，我们接下来的一段的两端的颜色应当是相同的时候最优，所以就可以对不同的颜色分开讨论。</p>
+<p>考虑对于 $i$，有决策点 $j$，当且仅当 $c_i==c_j$。若此时有两个决策点 $j&lt;k$，此时 $j$ 比 $k$ 更优当且仅当：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_{j-1}+c_i\times(s_i-s_j+1)^2&>f_{k-1}+c_i\times(s_k-s_j+1)^2\\
+f_{j-1}+c_is_j-2c_is_is_j+c_i{s_j}^2+c_i&>f_{k-1}+c_is_k-2c_is_is_k+c_i{s_k}^2+c_i\\
+f_{j-1}+c_is_j-2c_is_is_j+c_i{s_j}^2&>f_{k-1}+c_is_k-2c_is_is_k+c_i{s_k}^2\\
+f_{j-1}-2c_is_is_j+c_i{s_j}^2-f_{k-1}-2c_is_is_k+c_i{s_k}^2&>c_i(s_k-s_j)\\
+\frac{\Delta y}{c_i(s_k-s_j)}&>1
+\end{aligned}</script><p>由于这些点的 $s$ 是丹增的，所以就可以用栈维护一个上凸壳，栈定就是当点的最优决策点。</p>
+<p>所以找出来所有决策点以后，在用决策单调性稍加处理，就可以统计答案了。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        Code
+    </div>
+    <div class='spoiler-content'>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">1e4</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n, tot[maxm];</span><br><span class="line"><span class="keyword">int</span> s[maxn], c[maxn];</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; stk[maxm];</span><br><span class="line">ll f[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Y</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f[i - <span class="number">1</span>] + <span class="number">1l</span>l * c[i] * s[i] * s[i] - <span class="number">2l</span>l * c[i] * s[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">slope</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span> * (Y(i) - Y(j)) / (s[i] * c[i] - s[j] * c[j]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">calc</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f[j - <span class="number">1</span>] + <span class="number">1l</span>l * c[i] * (s[i] - s[j] + <span class="number">1</span>) * (s[i] - s[j] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> t1 stk[t][stk[t].size() - 1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> t2 stk[t][stk[t].size() - 2]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%d"</span>, c + i);</span><br><span class="line">        s[i] = ++tot[c[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, t; i &lt;= n; ++i) &#123;</span><br><span class="line">        t = c[i];</span><br><span class="line">        <span class="keyword">while</span> (stk[t].size() &gt; <span class="number">1</span> &amp;&amp; slope(t2, i) &gt;= slope(t2, t1)) stk[t].pop_back();</span><br><span class="line">        stk[t].push_back(i);</span><br><span class="line">        <span class="keyword">while</span> (stk[t].size() &gt; <span class="number">1</span> &amp;&amp; calc(i, t1) &lt;= calc(i, t2)) stk[t].pop_back();</span><br><span class="line">        f[i] = calc(i, t1);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"%lld\n"</span>, f[n]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+</div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
@@ -532,7 +536,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%87%A0%E4%BD%95/" rel="tag"><i class="fa fa-tag"></i> 几何</a>
+            <a href="/tags/Dp%E4%BC%98%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> Dp优化</a>
           
         </div>
       
@@ -545,8 +549,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/23/ToMyself/" rel="next" title="ToMyself">
-                <i class="fa fa-chevron-left"></i> ToMyself
+              <a href="/2020/11/20/T20201120/" rel="next" title="T20201120">
+                <i class="fa fa-chevron-left"></i> T20201120
               </a>
             
           </div>
@@ -555,8 +559,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/24/%E6%82%AC%E7%BA%BFDp/" rel="prev" title="悬线Dp">
-                悬线Dp <i class="fa fa-chevron-right"></i>
+              <a href="/2223/10/22/%E5%88%9D%E8%B5%9B%E6%95%B4%E5%90%88-%E4%B8%B4%E9%97%A8%E4%B8%80%E8%84%9A/" rel="prev" title="初赛整合-临门一脚[转载&置顶]">
+                初赛整合-临门一脚[转载&置顶] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -880,7 +884,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSOI2004-平衡点-吊打XXX"><span class="nav-number">1.</span> <span class="nav-text">[JSOI2004]平衡点 &#x2F; 吊打XXX</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.1.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSOI2011-柠檬"><span class="nav-number">1.</span> <span class="nav-text">[JSOI2011]柠檬</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.1.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
             
 
           </div>
