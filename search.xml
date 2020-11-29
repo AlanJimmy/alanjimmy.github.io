@@ -3352,4 +3352,45 @@ sum_n&=\sum_{i=1}^n\frac {n\mod i}i\\
         <tag>前缀和</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SDOI2015约数个数和</title>
+    <url>/2020/11/29/SDOI2015%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C/</url>
+    <content><![CDATA[<h1 id="SDOI2015-约数个数和"><a href="#SDOI2015-约数个数和" class="headerlink" title="[SDOI2015]约数个数和"></a><a href="https://www.luogu.com.cn/problem/P3327" target="_blank" rel="noopener">[SDOI2015]约数个数和</a></h1><h2 id="题目简述"><a href="#题目简述" class="headerlink" title="题目简述"></a>题目简述</h2><p>求：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n\sum_{j=1}^m\sigma(ij)</script><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><script type="math/tex; mode=display">
+\sigma(ij)=\sum_{x|i}\sum_{y|j}[x\perp y]</script><p><strong>证明：</strong></p>
+<script type="math/tex; mode=display">
+i=\prod_{k=1}{p_k}^{a_k},j=\prod_{k=1}{p_k}^{b_k}\\
+ij=\prod_{k=1}{p_k}^{a_k+b_k},\sigma(ij)=\prod_{k=1}(a_k+b_k+1)</script><p>所以说，可以有这样的假设：</p>
+<ul>
+<li>当 $x\perp y\;\;\land {a_k}^\prime&gt;0$ 时，$x\times y$ 的 $p_k$ 的指数就是 ${a_k}^\prime$。</li>
+<li>当 $x\perp y\;\;\land {b_k}^\prime&gt;0$ 时，$x\times y$ 的 $p_k$ 的指数就是 $a_k+{b_k}^\prime$</li>
+</ul>
+<p>所以这样可以不重不漏的枚举出所有 $ij$ 的约数。</p>
+<h2 id="化简"><a href="#化简" class="headerlink" title="化简"></a>化简</h2><p>所以原式可以化为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sum_{i=1}^n\sum_{j=1}^m\sigma(ij)&=\sum_{i=1}^n\sum_{j=1}^m\sum_{x|i}\sum_{y|j}[x\perp y]\\
+&=\sum_{i=1}^n\sum_{j=1}^m\sum_{x|i}\sum_{y|j}\sum_{d|\gcd(x,y)}\mu(d)\\
+&=\sum_{d=1}^n\mu(d)\sum_{i=1}^{\lfloor\frac nd\rfloor}\sum_{j=1}^{\lfloor\frac md\rfloor}\sigma(i)\sigma(j)\\
+&=\sum_{d=1}^n\mu(d)\sum_{i=1}^{\lfloor\frac nd\rfloor}\sigma(i)\sum_{j=1}^{\lfloor\frac md\rfloor}\sigma(j)\\
+&=\sum_{d=1}^n\mu(d)g(\lfloor\frac nd\rfloor)g(\lfloor\frac md\rfloor)
+\end{aligned}</script><p>所以就是 $O(n)$ 的预处理 $+\;O(T\sqrt n)$ 的查询，这道题就愉快的结束了。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        Code
+    </div>
+    <div class='spoiler-content'>
+        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Maxn = <span class="number">5e4</span>;</span><br><span class="line"><span class="keyword">int</span> Cnt, Prim[Maxn + <span class="number">5</span>], Mu[Maxn + <span class="number">5</span>], C[Maxn + <span class="number">5</span>];</span><br><span class="line">ll D[Maxn];</span><br><span class="line"><span class="keyword">bool</span> Vis[Maxn + <span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> T, N, M;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mu[<span class="number">1</span>] = D[<span class="number">1</span>] = C[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= Maxn; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!Vis[i]) Prim[++Cnt] = i, Mu[i] = <span class="number">-1</span>, C[i] = <span class="number">1</span>, D[i] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= Cnt &amp;&amp; i * Prim[j] &lt;= Maxn; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            Vis[i * Prim[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % Prim[j] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                D[i * Prim[j]] = D[i] / (C[i] + <span class="number">1</span>) * (C[i] + <span class="number">2</span>);</span><br><span class="line">                C[i * Prim[j]] = C[i] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Mu[i * Prim[j]] = -Mu[i];</span><br><span class="line">            D[i * Prim[j]] = D[i] &lt;&lt; <span class="number">1</span>;</span><br><span class="line">            C[i * Prim[j]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Mu[i] += Mu[i - <span class="number">1</span>], D[i] += D[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">x</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">char</span> <span class="title">o</span><span class="params">(getchar())</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (o &lt; <span class="string">'0'</span> || o &gt; <span class="string">'9'</span>) o = getchar();</span><br><span class="line">    <span class="keyword">for</span> (; o &gt;= <span class="string">'0'</span> &amp;&amp; o &lt;= <span class="string">'9'</span>; o = getchar())</span><br><span class="line">        x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (o ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Init();</span><br><span class="line">    T = read();    </span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        N = read(), M = read();        </span><br><span class="line">        <span class="keyword">if</span> (N &gt; M) swap(N, M);</span><br><span class="line">        <span class="function">ll <span class="title">Ans</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>, r; l &lt;= N; l = r + <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            r = min(N / (N / l), M / (M / l));</span><br><span class="line">            Ans += (Mu[r] - Mu[l - <span class="number">1</span>]) * D[N / l] * D[M / l];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, Ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+</div>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+        <tag>前缀和</tag>
+      </tags>
+  </entry>
 </search>
