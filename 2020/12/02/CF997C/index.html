@@ -94,14 +94,19 @@
   
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="非常不戳的一道容斥">
+<meta property="og:type" content="article">
 <meta property="og:title" content="CF997C">
 <meta property="og:url" content="https://github.com/AlanJimmy/alanjimmy.github.io/2020/12/02/CF997C/index.html">
 <meta property="og:site_name" content="AlanTuring&#39;s Blog">
+<meta property="og:description" content="非常不戳的一道容斥">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-02T08:59:16.000Z">
-<meta property="article:modified_time" content="2020-12-02T09:02:17.415Z">
+<meta property="article:modified_time" content="2020-12-02T13:10:44.256Z">
 <meta property="article:author" content="AlanTuring">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="容斥">
+<meta property="article:tag" content="组合数学">
 <meta name="twitter:card" content="summary">
 
 
@@ -396,7 +401,7 @@
                 
               
 
-              <time title="Created: 2020-12-02 16:59:16 / Modified: 17:02:17" itemprop="dateCreated datePublished" datetime="2020-12-02T16:59:16+08:00">2020-12-02</time>
+              <time title="Created: 2020-12-02 16:59:16 / Modified: 21:10:44" itemprop="dateCreated datePublished" datetime="2020-12-02T16:59:16+08:00">2020-12-02</time>
             
 
             
@@ -449,7 +454,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">130</span>
+                <span title="Symbols count in article">11k</span>
               
 
               
@@ -463,11 +468,13 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">10 mins.</span>
               
             </div>
           
 
+          
+              <div class="post-description">非常不戳的一道容斥</div>
           
 
         </div>
@@ -483,7 +490,33 @@
       
 
       
-        <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+        <h1 id="CF997C-Sky-Full-of-Stars"><a href="#CF997C-Sky-Full-of-Stars" class="headerlink" title="CF997C Sky Full of Stars"></a><a href="https://www.luogu.com.cn/problem/CF997C" target="_blank" rel="noopener">CF997C Sky Full of Stars</a></h1><p>这道题的第一想法就是用总方案数减去不合法的方案，显然不合法的方案就是没有一行 / 一列 是全部相同的。</p>
+<p>那么这就可以把行列分开讨论：</p>
+<ul>
+<li>没有一列合法的方案总数为：$(3^n-3)^n$</li>
+<li>至少有一行合法且没有列合法的方案总数为：$-\sum\limits_{i=1}^n(-1)^i\binom ni\left(3\times\left(3^{n-i}-1\right)^n+\left(3^i-3\right)\times3^{n(n-i)}\right)$</li>
+</ul>
+<blockquote>
+<p>   简单说明一下，就是枚举有几行是相同的，然后又需要分类讨论了：</p>
+<ul>
+<li>若：这几行的颜色都相同，那么所有列的都没有一个合法的</li>
+<li>若：这几行颜色不同，那么剩下的就可以乱选了</li>
+</ul>
+</blockquote>
+<p>总结一下，答案就是：</p>
+<script type="math/tex; mode=display">
+ans = 3^{n^2}-\left((3^n-3)^n+\sum\limits_{i=1}^n(-1)^i\binom ni\left(3\times\left(3^{n-i}-1\right)^n+\left(3^i-3\right)\times3^{n(n-i)}\right)\right)</script><p>所以预处理一下，整体时间复杂度就是 $O(n\log n)$ 的了，只可惜考场没有推出来。。。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        Code
+    </div>
+    <div class='spoiler-content'>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> per(i, l, r) for (ll i = l; i &lt;= r; ++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, l, r) for (ll i = r; i &gt;= l; --i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> ll maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> infile[] = <span class="string">".in"</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> outfile[] = <span class="string">".out"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">       ll x(0), t(0);</span><br><span class="line">       <span class="function"><span class="keyword">char</span> <span class="title">o</span><span class="params">(getchar())</span></span>;</span><br><span class="line">       <span class="keyword">while</span> (o &lt; <span class="string">'0'</span> || o &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (o == <span class="string">'-'</span>) t = <span class="number">1</span>;</span><br><span class="line">           o = getchar();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">for</span> (; o &gt;= <span class="string">'0'</span> &amp;&amp; o &lt;= <span class="string">'9'</span>; o = getchar())</span><br><span class="line">           x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (o ^ <span class="number">48</span>);</span><br><span class="line">       <span class="keyword">return</span> t ? -x : x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">file</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    freopen (infile, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen (outfile, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Pow</span><span class="params">(ll x, ll y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">ll <span class="title">res</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (y) &#123;</span><br><span class="line">        <span class="keyword">if</span> (y &amp; <span class="number">1</span>) res = res * x % mod;</span><br><span class="line">        x = x * x % mod;</span><br><span class="line">        y &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll ans, fac[maxn], inv[maxn], bas[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">C</span><span class="params">(ll x, ll y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fac[x] * inv[y] % mod * inv[x - y] % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll n = read();</span><br><span class="line">    ans = (Pow(<span class="number">3</span>, n * n) - Pow((Pow(<span class="number">3</span>, n) - <span class="number">3</span> + mod) % mod, n) + mod) % mod;</span><br><span class="line">    fac[<span class="number">0</span>] = inv[<span class="number">0</span>] = bas[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    per (i, <span class="number">1</span>, n) &#123;</span><br><span class="line">        fac[i] = fac[i - <span class="number">1</span>] * i % mod;</span><br><span class="line">        bas[i] = <span class="number">3</span> * bas[i - <span class="number">1</span>] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    inv[n] = Pow(fac[n], mod - <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    rep (i, <span class="number">2</span>, n)</span><br><span class="line">        inv[i - <span class="number">1</span>] = inv[i] * i % mod;</span><br><span class="line"></span><br><span class="line">    per (i, <span class="number">1</span>, n) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &amp; <span class="number">1</span>)</span><br><span class="line">            ans = (ans + C(n, i) * (<span class="number">3</span> * Pow(bas[n - i] - <span class="number">1</span>, n) % mod + (bas[i] - <span class="number">3</span>) * Pow(<span class="number">3</span>, n * (n - i)) % mod) % mod) % mod;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ans = (ans - C(n, i) * (<span class="number">3</span> * Pow(bas[n - i] - <span class="number">1</span>, n) % mod + (bas[i] - <span class="number">3</span>) * Pow(<span class="number">3</span>, n * (n - i)) % mod) % mod + mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+</div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
@@ -503,6 +536,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
+          
+            <a href="/tags/%E5%AE%B9%E6%96%A5/" rel="tag"><i class="fa fa-tag"></i> 容斥</a>
+          
+            <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
+          
+        </div>
       
 
       
@@ -574,8 +617,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -833,6 +885,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CF997C-Sky-Full-of-Stars"><span class="nav-number">1.</span> <span class="nav-text">CF997C Sky Full of Stars</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.1.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -867,7 +936,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">350k</span>
+    <span title="Symbols count total">351k</span>
   
 
   
@@ -878,7 +947,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">5:18</span>
+    <span title="Reading time total">5:20</span>
   
 </div>
 
